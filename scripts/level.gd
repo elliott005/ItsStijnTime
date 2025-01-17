@@ -18,6 +18,8 @@ var viewer_count = 0
 
 var viewer_scene = preload("res://scenes/viewer.tscn")
 
+var mod_death_time = 0.7
+
 func _ready():
 	viewer_count_label.text = "0 viewers"
 	lost_container.hide()
@@ -49,8 +51,19 @@ func _process(delta):
 
 func _on_took_hit():
 	if mods.size():
-		mods.pop_front()
 		mods_container.remove_child(mods_container.get_child(0))
+		var screen_size = get_viewport().content_scale_size
+		var mod_label = Label.new()
+		mod_label.text = mods[0]
+		mod_label.position = Vector2(0.0, screen_size.y - 100.0)
+		add_child(mod_label)
+		var tween = get_tree().create_tween()
+		tween.set_parallel()
+		tween.tween_property(mod_label, "position", screen_size / 2.0 - Vector2(100, 100), mod_death_time)
+		tween.tween_property(mod_label, "rotation", 2 * PI, mod_death_time)
+		tween.tween_property(mod_label, "scale", Vector2.ONE * 0.1, mod_death_time)
+		tween.tween_callback(mod_label.queue_free).set_delay(mod_death_time)
+		mods.pop_front()
 	else:
 		get_tree().paused = true
 		lost_container.show()

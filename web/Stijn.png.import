@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b541gopun30ja"
-path="res://.godot/imported/Stijn.png-dc33b6511635dc6a577d747ff3ffc182.ctex"
+path="res://.godot/imported/Stijn.png-22386d4be54ec2df6bcb505213be2461.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://exports/Stijn.png"
-dest_files=["res://.godot/imported/Stijn.png-dc33b6511635dc6a577d747ff3ffc182.ctex"]
+source_file="res://web/Stijn.png"
+dest_files=["res://.godot/imported/Stijn.png-22386d4be54ec2df6bcb505213be2461.ctex"]
 
 [params]
 
