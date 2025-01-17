@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3qwp6buny08x"]
+
+[ext_resource type="Script" path="res://scripts/paddle.gd" id="1_8nrs1"]
+
+[node name="Paddle" type="Node2D"]
+script = ExtResource("1_8nrs1")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 64
+text = "Stijn"

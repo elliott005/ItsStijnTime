@@ -1,0 +1,107 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhapreuj4vuwd"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_1fpf2"]
+[ext_resource type="PackedScene" uid="uid://f8rrnt3fgi2b" path="res://scenes/ball.tscn" id="1_rcjqi"]
+[ext_resource type="PackedScene" uid="uid://b3qwp6buny08x" path="res://scenes/paddle.tscn" id="2_exl23"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_1fpf2")
+
+[node name="Ball" parent="." instance=ExtResource("1_rcjqi")]
+position = Vector2(192, 192)
+
+[node name="Paddle" parent="." instance=ExtResource("2_exl23")]
+position = Vector2(424, 536)
+
+[node name="Viewers" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "MODS:"
+
+[node name="ModsContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="WonContainer" type="CenterContainer" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WonContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/WonContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "You  Won!!!"
+
+[node name="TryAgainButton" type="Button" parent="CanvasLayer/WonContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "Try Again"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/WonContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+
+[node name="LostContainer" type="CenterContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LostContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/LostContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "You Got Botted!!!"
+
+[node name="TryAgainButton" type="Button" parent="CanvasLayer/LostContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "Try Again"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/LostContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+
+[node name="ViewerContainer" type="CenterContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 44.0
+
+[node name="ViewerCountLabel" type="Label" parent="CanvasLayer/ViewerContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="took_hit" from="." to="." method="_on_took_hit"]
+[connection signal="pressed" from="CanvasLayer/WonContainer/VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/WonContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/LostContainer/VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/LostContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

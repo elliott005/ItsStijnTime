@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c6cuunqgamj1f"]
+
+[ext_resource type="FontFile" uid="uid://dy3phm2p86qen" path="res://assets/NormalFont.ttf" id="1_0jvi7"]
+
+[resource]
+Button/fonts/font = ExtResource("1_0jvi7")
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_0jvi7")
