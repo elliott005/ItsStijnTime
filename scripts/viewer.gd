@@ -13,7 +13,7 @@ func _process(delta):
 	if hit:
 		velocity = move_toward(velocity, max_speed, acceleration * delta)
 		position.y += velocity * delta
-		var screen_size = get_viewport().size
+		var screen_size = get_viewport().content_scale_size
 		if position.y > screen_size.y:
 			queue_free()
 	else:

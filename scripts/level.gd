@@ -27,7 +27,7 @@ func _ready():
 		mod_label.text = mod
 		mods_container.add_child(mod_label)
 	
-	var screen_size = get_viewport().size
+	var screen_size = get_viewport().content_scale_size
 	var spawn_area_size = Vector2(screen_size.x, screen_size.y / 2 - 100)
 	
 	for i in range(5):

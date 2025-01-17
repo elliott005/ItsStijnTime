@@ -8,7 +8,7 @@ var speed = 300.0
 
 func _process(delta):
 	position += dir * speed * delta
-	var screen_size = get_viewport().size
+	var screen_size = get_viewport().content_scale_size
 	if position.x < 0.0 or position.x > screen_size.x - width:
 		dir.x *= -1
 		position.x = clamp(position.x, 0.0, screen_size.x - width)
