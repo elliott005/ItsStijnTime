@@ -1,11 +1,65 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhapreuj4vuwd"]
+[gd_scene load_steps=16 format=3 uid="uid://dhapreuj4vuwd"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_1fpf2"]
 [ext_resource type="PackedScene" uid="uid://f8rrnt3fgi2b" path="res://scenes/ball.tscn" id="1_rcjqi"]
 [ext_resource type="PackedScene" uid="uid://b3qwp6buny08x" path="res://scenes/paddle.tscn" id="2_exl23"]
+[ext_resource type="Shader" path="res://shaders/level_background.gdshader" id="2_ikdce"]
+[ext_resource type="Shader" path="res://shaders/fire.gdshader" id="3_el82a"]
+[ext_resource type="Shader" path="res://shaders/main_menu_label.gdshader" id="6_3yp31"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tmcv3"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sm03f"]
+noise = SubResource("FastNoiseLite_tmcv3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o272b"]
+shader = ExtResource("2_ikdce")
+shader_parameter/base_color = Color(0.45098, 0, 1, 0.192157)
+shader_parameter/speed = 1.0
+shader_parameter/dist = 10.0
+shader_parameter/noise = SubResource("NoiseTexture2D_sm03f")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7smp4"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_umio0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jd3y7"]
+noise = SubResource("FastNoiseLite_umio0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kagns"]
+shader = ExtResource("3_el82a")
+shader_parameter/bottom_color = Color(0, 0.7, 1, 1)
+shader_parameter/middle_color = Color(1, 0.5, 0, 1)
+shader_parameter/top_color = Color(1, 0.03, 0.001, 1)
+shader_parameter/fire_alpha = 0.5
+shader_parameter/fire_speed = Vector2(0, 0.5)
+shader_parameter/fire_aperture = 0.3
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_jd3y7")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_lpn1o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajgj7"]
+shader = ExtResource("6_3yp31")
+shader_parameter/speed = 3.0
+shader_parameter/dist = 10.0
+shader_parameter/color_1 = Vector4(0, 0, 1, 0)
+shader_parameter/color_2 = Vector4(0, 1, 0, 0)
+shader_parameter/base_color = Color(1, 1, 1, 1)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_1fpf2")
+
+[node name="Background" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_o272b")
+position = Vector2(575.75, 323.75)
+scale = Vector2(1152.5, 648.5)
+texture = SubResource("CanvasTexture_7smp4")
+
+[node name="FireBackground" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_kagns")
+position = Vector2(576, 636)
+scale = Vector2(1152, 264)
+texture = SubResource("CanvasTexture_lpn1o")
 
 [node name="Ball" parent="." instance=ExtResource("1_rcjqi")]
 position = Vector2(192, 192)
@@ -39,7 +93,6 @@ layout_mode = 2
 
 [node name="WonContainer" type="CenterContainer" parent="CanvasLayer"]
 process_mode = 3
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -50,6 +103,7 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/WonContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_ajgj7")
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "You  Won!!!"

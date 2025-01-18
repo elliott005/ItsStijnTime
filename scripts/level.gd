@@ -32,7 +32,7 @@ func _ready():
 		mods_container.add_child(mod_label)
 	
 	var screen_size = get_viewport().content_scale_size
-	var spawn_area_size = Vector2(screen_size.x, screen_size.y / 2 - 100)
+	var spawn_area_size = Vector2(screen_size.x - 100, screen_size.y / 2 - 100)
 	
 	for i in range(5):
 		var viewer = viewer_scene.instantiate()
@@ -41,7 +41,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	for viewer in viewers.get_children():
 		if Rect2(paddle.position, Vector2(paddle.width, paddle.height)).intersects(Rect2(viewer.position, Vector2(viewer.width, viewer.height))):
 			viewer_count += 1
