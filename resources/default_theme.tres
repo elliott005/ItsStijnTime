@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://dy3phm2p86qen" path="res://assets/NormalFont.ttf" id="1_0jvi7"]
 
 [resource]
+Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_0jvi7")
 Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("1_0jvi7")
