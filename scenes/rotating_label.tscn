@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn0b0aepee7sd"]
+
+[ext_resource type="Script" path="res://scripts/rotating_label.gd" id="1_monua"]
+
+[node name="RotatingLabel" type="Node2D"]
+script = ExtResource("1_monua")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -584.0
+offset_top = -56.0
+offset_right = 584.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 64
+text = "Text"
+horizontal_alignment = 1

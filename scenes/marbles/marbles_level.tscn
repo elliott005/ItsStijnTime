@@ -1,0 +1,160 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1bdcciwbr0uc"]
+
+[ext_resource type="Script" path="res://scripts/marbles_level.gd" id="1_ktctj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4ghl"]
+size = Vector2(986, 338)
+
+[node name="MarblesLevel" type="Node2D"]
+script = ExtResource("1_ktctj")
+world_color = Color(0, 0.741176, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World"]
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+position = Vector2(0, 136)
+polygon = PackedVector2Array(24, 24, 280, 56, 328, 184, 456, 264, 656, 296, 136, 280)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+position = Vector2(0, 256)
+polygon = PackedVector2Array(-32, 112, 0, 176, 144, 320, -64, 312, -384, -32, -128, 88)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+position = Vector2(528, 512)
+polygon = PackedVector2Array(160, 8, 408, -40, 520, -16, -64, 312, -200, 288, -128, 88)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+position = Vector2(-944, -568)
+polygon = PackedVector2Array(-48, 712, 736, 1400, 960, 1496, 904, 1552, 1408, 1960, 1200, 1984, 160, 1840, -56, 1096)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(1304, 896, 1024, 992, 760, 1032, 584, 1256, 816, 1464, 920, 1680, 688, 1960, 264, 2008, 408, 2088, 312, 2432, 112, 2512, -24, 2552, -136, 2560, -288, 2648, 376, 2592, 496, 2088, 1088, 1840, 1752, 192, 1472, -48, 1208, 376, 1120, 632)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(96, 696, 240, 624, 256, 656, 256, 696, 216, 760, 112, 784, 32, 776, 16, 728)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(1080, 872, 864, 736, 992, 640, 1080, 784, 1136, 864)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+position = Vector2(-688, 224)
+polygon = PackedVector2Array(1080, 872, 864, 736, 960, 712, 992, 640, 1184, 728, 1136, 864)
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+position = Vector2(-8, -64)
+polygon = PackedVector2Array(544, 1576, 432, 1680, 624, 1776, 720, 1712)
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+position = Vector2(-104, -8)
+polygon = PackedVector2Array(224, 2080, 56, 2120, 168, 2160, 264, 2104)
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+position = Vector2(-40, -48)
+polygon = PackedVector2Array(400, 1744, 200, 1936, 576, 1872)
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(-128, 2304, -192, 2376, -24, 2400)
+
+[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(-1168, 2688, -992, 3040, 24, 3040, 176, 2688, 368, 2728, 24, 3184, -1168, 3192, -1320, 2744)
+
+[node name="EndArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndArea2D"]
+position = Vector2(-496, 2856)
+shape = SubResource("RectangleShape2D_u4ghl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="StartContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/StartContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="Player1Container" type="VBoxContainer" parent="CanvasLayer/StartContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Player1Label" type="Label" parent="CanvasLayer/StartContainer/HBoxContainer/Player1Container"]
+layout_mode = 2
+text = "Player 1:"
+
+[node name="Player1TextEdit" type="TextEdit" parent="CanvasLayer/StartContainer/HBoxContainer/Player1Container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+placeholder_text = "Name"
+
+[node name="Ready1Button" type="Button" parent="CanvasLayer/StartContainer/HBoxContainer/Player1Container"]
+layout_mode = 2
+text = "Ready!"
+
+[node name="Player2Container" type="VBoxContainer" parent="CanvasLayer/StartContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Player2Label" type="Label" parent="CanvasLayer/StartContainer/HBoxContainer/Player2Container"]
+layout_mode = 2
+text = "Player2:"
+
+[node name="Player2TextEdit" type="TextEdit" parent="CanvasLayer/StartContainer/HBoxContainer/Player2Container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+placeholder_text = "Name"
+
+[node name="Ready2Button" type="Button" parent="CanvasLayer/StartContainer/HBoxContainer/Player2Container"]
+layout_mode = 2
+text = "Ready!"
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BackButton" type="Button" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="EndCenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/EndCenterContainer"]
+layout_mode = 2
+
+[node name="WinnerLabel" type="Label" parent="CanvasLayer/EndCenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Winner: "
+
+[node name="TryAgainButton" type="Button" parent="CanvasLayer/EndCenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Play Again?"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/EndCenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Main Menu"
+
+[node name="Marbles" type="Node2D" parent="."]
+
+[connection signal="body_entered" from="EndArea2D" to="." method="_on_end_area_2d_body_entered"]
+[connection signal="pressed" from="CanvasLayer/StartContainer/HBoxContainer/Player1Container/Ready1Button" to="." method="_on_ready_1_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/StartContainer/HBoxContainer/Player2Container/Ready2Button" to="." method="_on_ready_2_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/EndCenterContainer/VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/EndCenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

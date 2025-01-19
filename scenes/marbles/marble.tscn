@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck7v5ioqalw0l"]
+
+[ext_resource type="Shader" path="res://shaders/circle.gdshader" id="1_70gad"]
+[ext_resource type="Script" path="res://scripts/marble.gd" id="1_nws0y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ohbdy"]
+radius = 32.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qittt"]
+shader = ExtResource("1_70gad")
+shader_parameter/size = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f5eea"]
+radius = 72.4431
+
+[node name="Marble" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_nws0y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ohbdy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_qittt")
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+color = Color(0, 1, 1, 1)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Node2D"]
+offset_left = -192.0
+offset_top = -80.0
+offset_right = 192.0
+offset_bottom = -36.0
+text = "BLALAALA"
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_f5eea")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
