@@ -21,3 +21,6 @@ func _process(delta):
 			ball.dir.y *= -1
 			ball.dir.x += dir
 			ball.dir = ball.dir.normalized()
+			if ball.dir.y < 0.3:
+				ball.dir.y -= 0.2
+				ball.dir = ball.dir.normalized()

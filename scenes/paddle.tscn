@@ -6,7 +6,8 @@
 script = ExtResource("1_8nrs1")
 
 [node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 44.0
+offset_top = -24.0
+offset_right = 185.0
+offset_bottom = 63.0
 theme_override_font_sizes/font_size = 64
 text = "Stijn"

@@ -46,11 +46,15 @@ theme_override_font_sizes/font_size = 64
 text = "It's Stijn Time!!!"
 
 [node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Play!"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Quit :("
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

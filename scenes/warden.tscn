@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://h6i0ndpc5ft7"]
+
+[ext_resource type="Script" path="res://scripts/warden.gd" id="1_vwi0j"]
+[ext_resource type="Shader" path="res://shaders/warden.gdshader" id="2_3y06e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1j3t"]
+shader = ExtResource("2_3y06e")
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/x = 0.2
+shader_parameter/limit = 0.4
+shader_parameter/y = 0.5
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_go17y"]
+
+[node name="Warden" type="Node2D"]
+script = ExtResource("1_vwi0j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_r1j3t")
+position = Vector2(64, 24)
+scale = Vector2(256, 96)
+texture = SubResource("CanvasTexture_go17y")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.694118, 0, 0, 1)
+text = "Warden"

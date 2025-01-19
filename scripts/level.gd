@@ -7,6 +7,9 @@ extends Node2D
 @onready var viewer_count_label = %ViewerCountLabel
 @onready var won_container = $CanvasLayer/WonContainer
 @onready var score_label = %ScoreLabel
+@onready var wardens = $Wardens
+@onready var warden_spawn_timer = $WardenSpawnTimer
+@onready var lost_label = %LostLabel
 
 signal took_hit
 
@@ -18,6 +21,7 @@ signal took_hit
 var viewer_count = 0
 
 var viewer_scene = preload("res://scenes/viewer.tscn")
+var warden_scene = preload("res://scenes/warden.tscn")
 
 var mod_death_time = 0.7
 var viewer_collect_time = 0.5
@@ -61,6 +65,19 @@ func _process(delta):
 		get_tree().paused = true
 		score_label.text = "Score: " + str(viewer_count)
 		won_container.show()
+	
+	for warden in wardens.get_children():
+		if Rect2(paddle.position, Vector2(paddle.width, paddle.height)).intersects(Rect2(warden.position, Vector2(warden.width, warden.height))):
+			get_tree().paused = true
+			lost_container.show()
+			lost_label.add_theme_font_size_override("font_size", 40)
+			lost_label.text = "Breaking News: Stijn KILLED by Warden!!!"
+
+func spawn_warden():
+	var screen_size = get_viewport().content_scale_size
+	var warden = warden_scene.instantiate()
+	warden.position = Vector2(randi_range(0, screen_size.x - 100.0), randi_range(-300, -40))
+	wardens.add_child(warden)
 
 func _on_took_hit():
 	if mods.size():
@@ -90,3 +107,8 @@ func _on_try_again_button_pressed():
 func _on_quit_button_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+
+func _on_warden_spawn_timer_timeout():
+	warden_spawn_timer.start(randf_range(1.5, 2.5))
+	spawn_warden()
