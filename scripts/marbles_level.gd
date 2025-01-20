@@ -87,7 +87,7 @@ func _on_ready_2_button_pressed():
 		marbles.add_child(marble2)
 		
 		player_2_label.text += " READY"
-		
+	
 		ready_marble(player_2_text_edit.text)
 
 func ready_marble(marble_name):
