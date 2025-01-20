@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1bdcciwbr0uc"]
+[gd_scene load_steps=10 format=3 uid="uid://b1bdcciwbr0uc"]
 
 [ext_resource type="Script" path="res://scripts/marbles_level.gd" id="1_ktctj"]
 [ext_resource type="Shader" path="res://shaders/marbles_level.gdshader" id="2_sesxg"]
 [ext_resource type="PackedScene" uid="uid://d2q220lwd7nfa" path="res://scenes/marbles/rotater.tscn" id="3_bkff7"]
+[ext_resource type="Texture2D" uid="uid://o21yn2l8iu02" path="res://assets/3.png" id="4_2st4p"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fyph7"]
 
@@ -179,6 +180,75 @@ collision_mask = 2
 position = Vector2(1544, 5064)
 shape = SubResource("RectangleShape2D_u4ghl")
 
+[node name="FollowButton" type="TouchScreenButton" parent="."]
+position = Vector2(16, 504)
+scale = Vector2(4.28571, 4.57143)
+texture_normal = ExtResource("4_2st4p")
+visibility_mode = 1
+
+[node name="Marbles" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1088.0
+offset_top = 5216.0
+offset_right = 1969.0
+offset_bottom = 5382.0
+theme_override_font_sizes/font_size = 124
+text = "Stijn Stream"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 120.0
+offset_top = 464.0
+offset_right = 586.0
+offset_bottom = 508.0
+text = "Get to Stijn's Stream First!"
+
+[node name="PotatoCheers" type="Node2D" parent="."]
+
+[node name="PotatoLabel" type="Label" parent="PotatoCheers"]
+offset_left = 152.0
+offset_top = 352.0
+offset_right = 355.0
+offset_bottom = 396.0
+text = "Go Potato!!!"
+
+[node name="PotatoLabel2" type="Label" parent="PotatoCheers"]
+offset_left = 1176.0
+offset_top = 624.0
+offset_right = 1830.0
+offset_bottom = 668.0
+rotation = -0.785398
+text = "peepoCheer Go Potato Go peepoCheer"
+
+[node name="PotatoLabel3" type="Label" parent="PotatoCheers"]
+offset_left = -576.0
+offset_top = 3808.0
+offset_right = -345.0
+offset_bottom = 3852.0
+text = "POTATO FTW"
+
+[node name="PotatoLabel4" type="Label" parent="PotatoCheers"]
+offset_left = -288.0
+offset_top = 856.0
+offset_right = 121.0
+offset_bottom = 900.0
+rotation = 0.698132
+text = "Potato is so HANDSOME"
+
+[node name="PotatoLabel5" type="Label" parent="PotatoCheers"]
+offset_left = 32.0
+offset_top = 2544.0
+offset_right = 338.0
+offset_bottom = 2588.0
+text = "Potato is so TALL"
+
+[node name="PotatoLabel6" type="Label" parent="PotatoCheers"]
+offset_left = 680.0
+offset_top = 1280.0
+offset_right = 1096.0
+offset_bottom = 1324.0
+text = "Potato is SO GOOD at TM"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
 
@@ -260,75 +330,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Main Menu"
 
-[node name="Marbles" type="Node2D" parent="."]
-
-[node name="Label" type="Label" parent="."]
-offset_left = 1088.0
-offset_top = 5216.0
-offset_right = 1969.0
-offset_bottom = 5382.0
-theme_override_font_sizes/font_size = 124
-text = "Stijn Stream"
-
-[node name="Label2" type="Label" parent="."]
-offset_left = 120.0
-offset_top = 464.0
-offset_right = 586.0
-offset_bottom = 508.0
-text = "Get to Stijn's Stream First!"
-
-[node name="PotatoCheers" type="Node2D" parent="."]
-
-[node name="PotatoLabel" type="Label" parent="PotatoCheers"]
-offset_left = 152.0
-offset_top = 352.0
-offset_right = 355.0
-offset_bottom = 396.0
-text = "Go Potato!!!"
-
-[node name="PotatoLabel2" type="Label" parent="PotatoCheers"]
-offset_left = 1176.0
-offset_top = 624.0
-offset_right = 1830.0
-offset_bottom = 668.0
-rotation = -0.785398
-text = "peepoCheer Go Potato Go peepoCheer"
-
-[node name="PotatoLabel3" type="Label" parent="PotatoCheers"]
-offset_left = -576.0
-offset_top = 3808.0
-offset_right = -345.0
-offset_bottom = 3852.0
-text = "POTATO FTW"
-
-[node name="PotatoLabel4" type="Label" parent="PotatoCheers"]
-offset_left = -288.0
-offset_top = 856.0
-offset_right = 121.0
-offset_bottom = 900.0
-rotation = 0.698132
-text = "Potato is so HANDSOME"
-
-[node name="PotatoLabel5" type="Label" parent="PotatoCheers"]
-offset_left = 32.0
-offset_top = 2544.0
-offset_right = 338.0
-offset_bottom = 2588.0
-text = "Potato is so TALL"
-
-[node name="PotatoLabel6" type="Label" parent="PotatoCheers"]
-offset_left = 680.0
-offset_top = 1280.0
-offset_right = 1096.0
-offset_bottom = 1324.0
-text = "Potato is SO GOOD at TM"
-
 [connection signal="body_entered" from="EndArea2D" to="." method="_on_end_area_2d_body_entered"]
+[connection signal="pressed" from="FollowButton" to="." method="_on_follow_button_pressed"]
 [connection signal="focus_entered" from="CanvasLayer/StartContainer/HBoxContainer/Player1Container/Player1TextEdit" to="." method="_on_player_1_text_edit_focus_entered"]
-[connection signal="focus_exited" from="CanvasLayer/StartContainer/HBoxContainer/Player1Container/Player1TextEdit" to="." method="_on_player_1_text_edit_focus_exited"]
 [connection signal="pressed" from="CanvasLayer/StartContainer/HBoxContainer/Player1Container/Ready1Button" to="." method="_on_ready_1_button_pressed"]
 [connection signal="focus_entered" from="CanvasLayer/StartContainer/HBoxContainer/Player2Container/Player2TextEdit" to="." method="_on_player_2_text_edit_focus_entered"]
-[connection signal="focus_exited" from="CanvasLayer/StartContainer/HBoxContainer/Player2Container/Player2TextEdit" to="." method="_on_player_2_text_edit_focus_exited"]
 [connection signal="pressed" from="CanvasLayer/StartContainer/HBoxContainer/Player2Container/Ready2Button" to="." method="_on_ready_2_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndCenterContainer/VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]

@@ -17,6 +17,7 @@ extends Node2D
 signal clicked_marble(marble)
 
 var selected_marble = null
+var selected_marble_idx = 0
 
 var marble_scene = preload("res://scenes/marbles/marble.tscn")
 
@@ -118,14 +119,20 @@ func _on_quit_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 
+func _on_follow_button_pressed():
+	selected_marble_idx += 1
+	if selected_marble_idx >= marbles.get_child_count():
+		selected_marble_idx = 0
+	selected_marble = marbles.get_child(selected_marble_idx)
+
+
 func _on_player_1_text_edit_focus_entered():
-	DisplayServer.virtual_keyboard_show('')
+	if OS.has_feature("web_android") or OS.has_feature("web_ios"):
+		player_1_text_edit.text = read_input()
 
 func _on_player_2_text_edit_focus_entered():
-	DisplayServer.virtual_keyboard_show('')
+	if OS.has_feature("web_android") or OS.has_feature("web_ios"):
+		player_2_text_edit.text = read_input()
 
-func _on_player_1_text_edit_focus_exited():
-	DisplayServer.virtual_keyboard_hide()
-
-func _on_player_2_text_edit_focus_exited():
-	DisplayServer.virtual_keyboard_hide()
+func read_input():
+	return JavaScriptBridge.eval("prompt('enter viewer name')", true)

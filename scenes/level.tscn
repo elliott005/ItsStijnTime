@@ -56,14 +56,12 @@ shader_parameter/base_color = Color(1, 1, 1, 1)
 script = ExtResource("1_1fpf2")
 
 [node name="Background" type="Sprite2D" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_o272b")
 position = Vector2(575.75, 323.75)
 scale = Vector2(1152.5, 648.5)
 texture = SubResource("CanvasTexture_7smp4")
 
 [node name="FireBackground" type="Sprite2D" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_kagns")
 position = Vector2(576, 636)
 scale = Vector2(1152, 264)
