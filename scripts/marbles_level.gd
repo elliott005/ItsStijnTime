@@ -116,3 +116,16 @@ func _on_try_again_button_pressed():
 
 func _on_quit_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+
+func _on_player_1_text_edit_focus_entered():
+	DisplayServer.virtual_keyboard_show('')
+
+func _on_player_2_text_edit_focus_entered():
+	DisplayServer.virtual_keyboard_show('')
+
+func _on_player_1_text_edit_focus_exited():
+	DisplayServer.virtual_keyboard_hide()
+
+func _on_player_2_text_edit_focus_exited():
+	DisplayServer.virtual_keyboard_hide()

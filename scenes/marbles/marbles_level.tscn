@@ -32,6 +32,7 @@ scale = Vector2(14200, 11728)
 texture = SubResource("CanvasTexture_0r2o2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(200, 16)
 
 [node name="World" type="Node2D" parent="."]
 
@@ -300,8 +301,34 @@ offset_right = -345.0
 offset_bottom = 3852.0
 text = "POTATO FTW"
 
+[node name="PotatoLabel4" type="Label" parent="PotatoCheers"]
+offset_left = -288.0
+offset_top = 856.0
+offset_right = 121.0
+offset_bottom = 900.0
+rotation = 0.698132
+text = "Potato is so HANDSOME"
+
+[node name="PotatoLabel5" type="Label" parent="PotatoCheers"]
+offset_left = 32.0
+offset_top = 2544.0
+offset_right = 338.0
+offset_bottom = 2588.0
+text = "Potato is so TALL"
+
+[node name="PotatoLabel6" type="Label" parent="PotatoCheers"]
+offset_left = 680.0
+offset_top = 1280.0
+offset_right = 1096.0
+offset_bottom = 1324.0
+text = "Potato is SO GOOD at TM"
+
 [connection signal="body_entered" from="EndArea2D" to="." method="_on_end_area_2d_body_entered"]
+[connection signal="focus_entered" from="CanvasLayer/StartContainer/HBoxContainer/Player1Container/Player1TextEdit" to="." method="_on_player_1_text_edit_focus_entered"]
+[connection signal="focus_exited" from="CanvasLayer/StartContainer/HBoxContainer/Player1Container/Player1TextEdit" to="." method="_on_player_1_text_edit_focus_exited"]
 [connection signal="pressed" from="CanvasLayer/StartContainer/HBoxContainer/Player1Container/Ready1Button" to="." method="_on_ready_1_button_pressed"]
+[connection signal="focus_entered" from="CanvasLayer/StartContainer/HBoxContainer/Player2Container/Player2TextEdit" to="." method="_on_player_2_text_edit_focus_entered"]
+[connection signal="focus_exited" from="CanvasLayer/StartContainer/HBoxContainer/Player2Container/Player2TextEdit" to="." method="_on_player_2_text_edit_focus_exited"]
 [connection signal="pressed" from="CanvasLayer/StartContainer/HBoxContainer/Player2Container/Ready2Button" to="." method="_on_ready_2_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndCenterContainer/VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]

@@ -7,8 +7,13 @@ var dir = 0.0
 var acceleration = 10.0
 var speed = 400.0
 
+var touch_screen_input = 0
+
 func _process(delta):
-	dir = move_toward(dir, Input.get_axis("move_left", "move_right"), acceleration * delta)
+	var input = Input.get_axis("move_left", "move_right")
+	if not input:
+		input = touch_screen_input
+	dir = move_toward(dir, input, acceleration * delta)
 	position.x += dir * speed * delta
 	var screen_size = get_viewport().content_scale_size
 	if position.x < 0.0 or position.x > screen_size.x - width:

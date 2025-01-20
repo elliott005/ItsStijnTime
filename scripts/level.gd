@@ -112,3 +112,16 @@ func _on_quit_button_pressed():
 func _on_warden_spawn_timer_timeout():
 	warden_spawn_timer.start(randf_range(1.5, 2.5))
 	spawn_warden()
+
+
+func _on_left_button_pressed():
+	paddle.touch_screen_input = -1
+
+func _on_right_button_pressed():
+	paddle.touch_screen_input = 1
+
+func _on_left_button_released():
+	paddle.touch_screen_input = 0
+
+func _on_right_button_released():
+	paddle.touch_screen_input = 0

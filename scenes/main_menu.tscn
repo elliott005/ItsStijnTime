@@ -81,7 +81,7 @@ label_rotation_speed = -200
 label_scale_speed = 2.1
 label_text = "Potato"
 
-[node name="RotatingLabel" parent="RotatingLabels" instance=ExtResource("4_fd480")]
+[node name="Finch" parent="RotatingLabels" instance=ExtResource("4_fd480")]
 position = Vector2(664, 96)
 label_rotation_speed = 225
 label_scale_speed = 3.0

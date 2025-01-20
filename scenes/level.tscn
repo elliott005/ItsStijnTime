@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dhapreuj4vuwd"]
+[gd_scene load_steps=20 format=3 uid="uid://dhapreuj4vuwd"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_1fpf2"]
 [ext_resource type="PackedScene" uid="uid://f8rrnt3fgi2b" path="res://scenes/ball.tscn" id="1_rcjqi"]
@@ -6,6 +6,8 @@
 [ext_resource type="Shader" path="res://shaders/level_background.gdshader" id="2_ikdce"]
 [ext_resource type="Shader" path="res://shaders/fire.gdshader" id="3_el82a"]
 [ext_resource type="Shader" path="res://shaders/main_menu_label.gdshader" id="6_3yp31"]
+[ext_resource type="Texture2D" uid="uid://ds4elq25ou7io" path="res://assets/4.png" id="6_fpnw0"]
+[ext_resource type="Texture2D" uid="uid://o21yn2l8iu02" path="res://assets/3.png" id="7_qd0rw"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tmcv3"]
 
@@ -38,6 +40,10 @@ shader_parameter/noise_tex = SubResource("NoiseTexture2D_jd3y7")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_lpn1o"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwr54"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tngem"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ajgj7"]
 shader = ExtResource("6_3yp31")
 shader_parameter/speed = 3.0
@@ -50,12 +56,14 @@ shader_parameter/base_color = Color(1, 1, 1, 1)
 script = ExtResource("1_1fpf2")
 
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_o272b")
 position = Vector2(575.75, 323.75)
 scale = Vector2(1152.5, 648.5)
 texture = SubResource("CanvasTexture_7smp4")
 
 [node name="FireBackground" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_kagns")
 position = Vector2(576, 636)
 scale = Vector2(1152, 264)
@@ -64,12 +72,26 @@ texture = SubResource("CanvasTexture_lpn1o")
 [node name="Ball" parent="." instance=ExtResource("1_rcjqi")]
 position = Vector2(192, 192)
 
-[node name="Paddle" parent="." instance=ExtResource("2_exl23")]
-position = Vector2(424, 536)
-
 [node name="Viewers" type="Node2D" parent="."]
 
 [node name="Wardens" type="Node2D" parent="."]
+
+[node name="LeftButton" type="TouchScreenButton" parent="."]
+position = Vector2(344, 488)
+scale = Vector2(6, 5.42857)
+texture_normal = ExtResource("7_qd0rw")
+shape = SubResource("RectangleShape2D_vwr54")
+visibility_mode = 1
+
+[node name="RightButton" type="TouchScreenButton" parent="."]
+position = Vector2(640, 488)
+scale = Vector2(6, 5.28571)
+texture_normal = ExtResource("6_fpnw0")
+shape = SubResource("RectangleShape2D_tngem")
+visibility_mode = 1
+
+[node name="Paddle" parent="." instance=ExtResource("2_exl23")]
+position = Vector2(424, 536)
 
 [node name="WardenSpawnTimer" type="Timer" parent="."]
 one_shot = true
@@ -174,6 +196,10 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [connection signal="took_hit" from="." to="." method="_on_took_hit"]
+[connection signal="pressed" from="LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="released" from="LeftButton" to="." method="_on_left_button_released"]
+[connection signal="pressed" from="RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="released" from="RightButton" to="." method="_on_right_button_released"]
 [connection signal="timeout" from="WardenSpawnTimer" to="." method="_on_warden_spawn_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/WonContainer/VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/WonContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

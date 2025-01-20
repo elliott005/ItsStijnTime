@@ -20,7 +20,26 @@ size = Vector2(266, 20)
 [node name="Rotater" type="AnimatableBody2D"]
 scale = Vector2(0.5, 0.5)
 collision_mask = 0
+sync_to_physics = false
 script = ExtResource("1_uk6sh")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="Node2D"]
+polygon = PackedVector2Array(-24, -24, -8, -32, 8, -32, 24, -24, 32, -8, 32, 8, 24, 24, 8, 32, -8, 32, -24, 24, -32, 8, -32, -8)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Node2D"]
+polygon = PackedVector2Array(-256, -8, -24, -8, -24, 8, -256, 8)
+
+[node name="Polygon2D3" type="Polygon2D" parent="Node2D"]
+position = Vector2(280, 0)
+polygon = PackedVector2Array(-256, -8, -24, -8, -24, 8, -256, 8)
+
+[node name="Polygon2D4" type="Polygon2D" parent="Node2D"]
+polygon = PackedVector2Array(-8, 24, 8, 24, 8, 256, -8, 256)
+
+[node name="Polygon2D5" type="Polygon2D" parent="Node2D"]
+polygon = PackedVector2Array(-8, -24, 8, -24, 8, -256, -8, -256)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ecriq")
@@ -40,21 +59,3 @@ shape = SubResource("RectangleShape2D_wrj7i")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
 position = Vector2(-123, 0)
 shape = SubResource("RectangleShape2D_mru3d")
-
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="Polygon2D" type="Polygon2D" parent="Node2D"]
-polygon = PackedVector2Array(-24, -24, -8, -32, 8, -32, 24, -24, 32, -8, 32, 8, 24, 24, 8, 32, -8, 32, -24, 24, -32, 8, -32, -8)
-
-[node name="Polygon2D2" type="Polygon2D" parent="Node2D"]
-polygon = PackedVector2Array(-256, -8, -24, -8, -24, 8, -256, 8)
-
-[node name="Polygon2D3" type="Polygon2D" parent="Node2D"]
-position = Vector2(280, 0)
-polygon = PackedVector2Array(-256, -8, -24, -8, -24, 8, -256, 8)
-
-[node name="Polygon2D4" type="Polygon2D" parent="Node2D"]
-polygon = PackedVector2Array(-8, 24, 8, 24, 8, 256, -8, 256)
-
-[node name="Polygon2D5" type="Polygon2D" parent="Node2D"]
-polygon = PackedVector2Array(-8, -24, 8, -24, 8, -256, -8, -256)
