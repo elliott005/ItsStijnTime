@@ -180,12 +180,6 @@ collision_mask = 2
 position = Vector2(1544, 5064)
 shape = SubResource("RectangleShape2D_u4ghl")
 
-[node name="FollowButton" type="TouchScreenButton" parent="."]
-position = Vector2(16, 504)
-scale = Vector2(4.28571, 4.57143)
-texture_normal = ExtResource("4_2st4p")
-visibility_mode = 1
-
 [node name="Marbles" type="Node2D" parent="."]
 
 [node name="Label" type="Label" parent="."]
@@ -330,8 +324,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Main Menu"
 
+[node name="FollowButton" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2(16, 504)
+scale = Vector2(4.28571, 4.57143)
+texture_normal = ExtResource("4_2st4p")
+visibility_mode = 1
+
 [connection signal="body_entered" from="EndArea2D" to="." method="_on_end_area_2d_body_entered"]
-[connection signal="pressed" from="FollowButton" to="." method="_on_follow_button_pressed"]
 [connection signal="focus_entered" from="CanvasLayer/StartContainer/HBoxContainer/Player1Container/Player1TextEdit" to="." method="_on_player_1_text_edit_focus_entered"]
 [connection signal="pressed" from="CanvasLayer/StartContainer/HBoxContainer/Player1Container/Ready1Button" to="." method="_on_ready_1_button_pressed"]
 [connection signal="focus_entered" from="CanvasLayer/StartContainer/HBoxContainer/Player2Container/Player2TextEdit" to="." method="_on_player_2_text_edit_focus_entered"]
@@ -339,3 +338,4 @@ text = "Main Menu"
 [connection signal="pressed" from="CanvasLayer/CenterContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndCenterContainer/VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndCenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/FollowButton" to="." method="_on_follow_button_pressed"]
