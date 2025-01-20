@@ -29,7 +29,6 @@ script = ExtResource("1_ktctj")
 world_color = Color(0, 0.741176, 0, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_ts5m5")
 position = Vector2(764, 1928)
 scale = Vector2(14200, 11728)
@@ -343,3 +342,4 @@ visibility_mode = 1
 [connection signal="pressed" from="CanvasLayer/EndCenterContainer/VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndCenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/FollowButton" to="." method="_on_follow_button_pressed"]
+[connection signal="released" from="CanvasLayer/FollowButton" to="." method="_on_follow_button_released"]

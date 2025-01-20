@@ -18,6 +18,7 @@ signal clicked_marble(marble)
 
 var selected_marble = null
 var selected_marble_idx = 0
+var follow_marble_button_pressed = false
 
 var marble_scene = preload("res://scenes/marbles/marble.tscn")
 
@@ -52,7 +53,7 @@ func _process(delta):
 		camera_2d.zoom = camera_2d.zoom.move_toward(Vector2.ONE * zoom_min, zoom_speed)
 	
 	if selected_marble != null:
-		if Input.is_action_just_pressed("drag_camera"):
+		if Input.is_action_just_pressed("drag_camera") and not follow_marble_button_pressed:
 			selected_marble = null
 		else:
 			camera_2d.position = selected_marble.global_position
@@ -126,6 +127,11 @@ func _on_follow_button_pressed():
 	if selected_marble_idx >= marbles.get_child_count():
 		selected_marble_idx = 0
 	selected_marble = marbles.get_child(selected_marble_idx)
+	
+	follow_marble_button_pressed = true
+
+func _on_follow_button_released():
+	follow_marble_button_pressed = false
 
 
 func _on_player_1_text_edit_focus_entered():
