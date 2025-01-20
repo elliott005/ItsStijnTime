@@ -66,27 +66,29 @@ func on_marble_clicked(marble):
 	selected_marble = marble
 
 func _on_ready_1_button_pressed():
-	num_ready += 1
-	var marble1 = marble_scene.instantiate()
-	marble1.marble_name = player_1_text_edit.text
-	marble1.position = Vector2(randi_range(0, random_start_pos_max.x), randi_range(0, random_start_pos_max.y))
-	marbles.add_child(marble1)
-	
-	player_1_label.text += " READY"
-	
-	ready_marble(player_1_text_edit.text)
+	if not player_1_label.text.contains("READY"):
+		num_ready += 1
+		var marble1 = marble_scene.instantiate()
+		marble1.marble_name = player_1_text_edit.text
+		marble1.position = Vector2(randi_range(0, random_start_pos_max.x), randi_range(0, random_start_pos_max.y))
+		marbles.add_child(marble1)
+		
+		player_1_label.text += " READY"
+		
+		ready_marble(player_1_text_edit.text)
 
 
 func _on_ready_2_button_pressed():
-	num_ready += 1
-	var marble2 = marble_scene.instantiate()
-	marble2.marble_name = player_2_text_edit.text
-	marble2.position = Vector2(randi_range(0, random_start_pos_max.x), randi_range(0, random_start_pos_max.y))
-	marbles.add_child(marble2)
-	
-	player_2_label.text += " READY"
-	
-	ready_marble(player_2_text_edit.text)
+	if not player_2_label.text.contains("READY"):
+		num_ready += 1
+		var marble2 = marble_scene.instantiate()
+		marble2.marble_name = player_2_text_edit.text
+		marble2.position = Vector2(randi_range(0, random_start_pos_max.x), randi_range(0, random_start_pos_max.y))
+		marbles.add_child(marble2)
+		
+		player_2_label.text += " READY"
+		
+		ready_marble(player_2_text_edit.text)
 
 func ready_marble(marble_name):
 	if num_ready >= 2:

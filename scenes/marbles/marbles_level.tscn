@@ -27,6 +27,7 @@ script = ExtResource("1_ktctj")
 world_color = Color(0, 0.741176, 0, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_ts5m5")
 position = Vector2(764, 1928)
 scale = Vector2(14200, 11728)
@@ -325,7 +326,7 @@ size_flags_horizontal = 4
 text = "Main Menu"
 
 [node name="FollowButton" type="TouchScreenButton" parent="CanvasLayer"]
-position = Vector2(16, 504)
+position = Vector2(1008, 496)
 scale = Vector2(4.28571, 4.57143)
 texture_normal = ExtResource("4_2st4p")
 visibility_mode = 1
