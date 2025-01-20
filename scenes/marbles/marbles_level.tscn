@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1bdcciwbr0uc"]
+[gd_scene load_steps=9 format=3 uid="uid://b1bdcciwbr0uc"]
 
 [ext_resource type="Script" path="res://scripts/marbles_level.gd" id="1_ktctj"]
 [ext_resource type="Shader" path="res://shaders/marbles_level.gdshader" id="2_sesxg"]
+[ext_resource type="PackedScene" uid="uid://d2q220lwd7nfa" path="res://scenes/marbles/rotater.tscn" id="3_bkff7"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fyph7"]
 
@@ -24,10 +25,10 @@ size = Vector2(986, 338)
 script = ExtResource("1_ktctj")
 world_color = Color(0, 0.741176, 0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ts5m5")
-position = Vector2(180, 1496)
-scale = Vector2(4264, 4208)
+position = Vector2(764, 1928)
+scale = Vector2(14200, 11728)
 texture = SubResource("CanvasTexture_0r2o2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -82,14 +83,99 @@ polygon = PackedVector2Array(400, 1744, 200, 1936, 576, 1872)
 polygon = PackedVector2Array(-128, 2304, -192, 2376, -24, 2400)
 
 [node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+position = Vector2(2032, 2192)
 polygon = PackedVector2Array(-1168, 2688, -992, 3040, 24, 3040, 176, 2688, 368, 2728, 24, 3184, -1168, 3192, -1320, 2744)
+
+[node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(-200, 2944, -48, 2968, 56, 3016, 200, 3112, 288, 3136, 168, 3208, -16, 3072, -200, 3136, -376, 3048)
+
+[node name="CollisionPolygon2D15" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(-464, 2872, -584, 2880, -584, 3008, -664, 3056, -760, 3144, -768, 3200, -528, 3104, -512, 2952)
+
+[node name="CollisionPolygon2D16" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(512, 2752, 512, 3232, 304, 3328, 96, 3352, 304, 3456, 704, 3264, 712, 2640)
+
+[node name="CollisionPolygon2D17" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(-448, 3192, -584, 3344, -264, 3344)
+
+[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(-904, 3264, -640, 3456, -1048, 3408, -1256, 3064, -1416, 2808, -1216, 2648)
+
+[node name="CollisionPolygon2D19" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(-440, 2040, -256, 1984, -352, 2176, -640, 2232)
+
+[node name="CollisionPolygon2D20" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(-776, 2792, -928, 2784, -992, 2400, -696, 2328)
+
+[node name="CollisionPolygon2D21" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(-680, 3624, -304, 3760, -216, 4088, 160, 4304, 272, 4640, 896, 4856, 80, 4920, -352, 4568, -816, 4088, -2728, 3120, -2728, 2344, -2480, 3096, -1200, 3544)
+
+[node name="CollisionPolygon2D22" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(-88, 3744, 216, 3856, 88, 4008, 0, 3848)
+
+[node name="CollisionPolygon2D23" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(360, 3952, 712, 4000, 784, 4032, 824, 4096, 840, 4200, 880, 4256, 936, 4312, 1016, 4352, 1120, 4392, 1024, 4480, 616, 4416, 432, 4168)
+
+[node name="CollisionPolygon2D24" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(2016, 4800, 2248, 3440, 2608, 3592, 2736, 4904)
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Rotater" parent="Obstacles" instance=ExtResource("3_bkff7")]
+position = Vector2(760, 1024)
+rotation_speed = -200.0
+base_color = Color(4.21144e-07, 0.234598, 0.0898078, 1)
+
+[node name="Rotater2" parent="Obstacles" instance=ExtResource("3_bkff7")]
+position = Vector2(272, 936)
+changing = true
+
+[node name="Rotater3" parent="Obstacles" instance=ExtResource("3_bkff7")]
+position = Vector2(-328, 2816)
+rotation_speed = 400.0
+changing = true
+change_time = 2.0
+base_color = Color(0.33326, 1, 0.544326, 1)
+
+[node name="Rotater4" parent="Obstacles" instance=ExtResource("3_bkff7")]
+position = Vector2(160, 2016)
+rotation_speed = 150.0
+changing = true
+base_color = Color(1, 1, 0.501961, 1)
+
+[node name="Rotater5" parent="Obstacles" instance=ExtResource("3_bkff7")]
+position = Vector2(-120, 2016)
+rotation_speed = 360.0
+changing = true
+
+[node name="Rotater6" parent="Obstacles" instance=ExtResource("3_bkff7")]
+position = Vector2(-88, 3352)
+changing = true
+
+[node name="Rotater7" parent="Obstacles" instance=ExtResource("3_bkff7")]
+position = Vector2(-72, 3752)
+changing = true
+
+[node name="Rotater8" parent="Obstacles" instance=ExtResource("3_bkff7")]
+position = Vector2(896, 4856)
+rotation_speed = 360.0
+
+[node name="Rotater9" parent="Obstacles" instance=ExtResource("3_bkff7")]
+position = Vector2(1128, 4384)
+rotation_speed = 360.0
+
+[node name="Rotater10" parent="Obstacles" instance=ExtResource("3_bkff7")]
+position = Vector2(1256, 4768)
+rotation_speed = 360.0
+changing = true
+change_time = 3.0
 
 [node name="EndArea2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndArea2D"]
-position = Vector2(-496, 2856)
+position = Vector2(1544, 5064)
 shape = SubResource("RectangleShape2D_u4ghl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -108,6 +194,7 @@ theme_override_constants/separation = 200
 layout_mode = 2
 
 [node name="Player1Label" type="Label" parent="CanvasLayer/StartContainer/HBoxContainer/Player1Container"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Viewer 1:"
 
@@ -125,6 +212,7 @@ text = "Ready!"
 layout_mode = 2
 
 [node name="Player2Label" type="Label" parent="CanvasLayer/StartContainer/HBoxContainer/Player2Container"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Viewer 2:"
 
@@ -174,10 +262,10 @@ text = "Main Menu"
 [node name="Marbles" type="Node2D" parent="."]
 
 [node name="Label" type="Label" parent="."]
-offset_left = -984.0
-offset_top = 3008.0
-offset_right = -103.0
-offset_bottom = 3174.0
+offset_left = 1088.0
+offset_top = 5216.0
+offset_right = 1969.0
+offset_bottom = 5382.0
 theme_override_font_sizes/font_size = 124
 text = "Stijn Stream"
 
@@ -187,6 +275,30 @@ offset_top = 464.0
 offset_right = 586.0
 offset_bottom = 508.0
 text = "Get to Stijn's Stream First!"
+
+[node name="PotatoCheers" type="Node2D" parent="."]
+
+[node name="PotatoLabel" type="Label" parent="PotatoCheers"]
+offset_left = 152.0
+offset_top = 352.0
+offset_right = 355.0
+offset_bottom = 396.0
+text = "Go Potato!!!"
+
+[node name="PotatoLabel2" type="Label" parent="PotatoCheers"]
+offset_left = 1176.0
+offset_top = 624.0
+offset_right = 1830.0
+offset_bottom = 668.0
+rotation = -0.785398
+text = "peepoCheer Go Potato Go peepoCheer"
+
+[node name="PotatoLabel3" type="Label" parent="PotatoCheers"]
+offset_left = -576.0
+offset_top = 3808.0
+offset_right = -345.0
+offset_bottom = 3852.0
+text = "POTATO FTW"
 
 [connection signal="body_entered" from="EndArea2D" to="." method="_on_end_area_2d_body_entered"]
 [connection signal="pressed" from="CanvasLayer/StartContainer/HBoxContainer/Player1Container/Ready1Button" to="." method="_on_ready_1_button_pressed"]

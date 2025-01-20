@@ -13,7 +13,7 @@ void fragment() {
 	// Called for every pixel the material is visible on.
 	vec4 col = base_color;
 	col.r = sin(TIME * speed + UV.x * 2.0) - 0.5;
-	col.g = sin(TIME * speed + UV.y * dist) - 0.8 + texture(noise, vec2(TIME * speed + UV.y * dist)).r;
+	//col.g = sin(TIME * speed + UV.y * dist) - 0.8 + texture(noise, vec2(TIME * speed + UV.y * dist)).r;
 	//col.r = 0.5;
 	COLOR = col;
 }

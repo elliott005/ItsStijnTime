@@ -6,10 +6,11 @@ extends Node2D
 @onready var player_1_text_edit = %Player1TextEdit
 @onready var player_2_text_edit = %Player2TextEdit
 @onready var marbles = $Marbles
-@onready var player_1_label = $CanvasLayer/StartContainer/HBoxContainer/Player1Container/Player1Label
-@onready var player_2_label = $CanvasLayer/StartContainer/HBoxContainer/Player2Container/Player2Label
+@onready var player_1_label = %Player1Label
+@onready var player_2_label = %Player2Label
 @onready var end_center_container = $CanvasLayer/EndCenterContainer
 @onready var winner_label = $CanvasLayer/EndCenterContainer/VBoxContainer/WinnerLabel
+@onready var potato_cheers = $PotatoCheers
 
 @export var world_color: Color
 
@@ -26,15 +27,17 @@ var zoom_max = 5.0
 var random_start_pos_max = Vector2(200, 100)
 
 var num_ready = 0
+var potato_playing = false
 
 func _ready():
 	end_center_container.hide()
+	potato_cheers.hide()
 	
 	for child in world.get_children():
 		for coll in child.get_children():
 			var poly = Polygon2D.new()
 			poly.polygon = coll.polygon
-			poly.color = world_color
+			poly.color = Color(randf(), randf(), randf(), 1)#world_color
 			coll.add_child(poly)
 	
 	get_tree().paused = true
@@ -70,9 +73,7 @@ func _on_ready_1_button_pressed():
 	
 	player_1_label.text += " READY"
 	
-	if num_ready >= 2:
-		get_tree().paused = false
-		start_container.hide()
+	ready_marble(player_1_text_edit.text)
 
 
 func _on_ready_2_button_pressed():
@@ -84,9 +85,15 @@ func _on_ready_2_button_pressed():
 	
 	player_2_label.text += " READY"
 	
+	ready_marble(player_2_text_edit.text)
+
+func ready_marble(marble_name):
 	if num_ready >= 2:
 		get_tree().paused = false
 		start_container.hide()
+	if marble_name.to_lower() == "potato":
+		potato_cheers.show()
+		potato_playing = true
 
 
 func _on_back_button_pressed():
@@ -97,7 +104,10 @@ func _on_back_button_pressed():
 func _on_end_area_2d_body_entered(body):
 	if not end_center_container.visible:
 		end_center_container.show()
-		winner_label.text += body.marble_name
+		if potato_playing and body.marble_name.to_lower() != "potato":
+			winner_label.text = body.marble_name + " was disqualified! Winner: Potato"
+		else:
+			winner_label.text += body.marble_name
 
 
 func _on_try_again_button_pressed():

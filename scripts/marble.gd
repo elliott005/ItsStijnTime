@@ -8,9 +8,6 @@ extends RigidBody2D
 
 func _ready():
 	label.text = marble_name
-	if marble_name.to_lower() == "potato":
-		color_rect.position = Vector2(-64, -64)
-		color_rect.size = Vector2(128, 128)
 	color_rect.color = Color(randf(), randf(), randf(), 1)
 
 func _process(delta):
