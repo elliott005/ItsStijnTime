@@ -12,4 +12,4 @@ Play it here: https://elliott005.github.io/ItsStijnTime/
 If an update to the game doesn't seem to change anything to the web version, try erasing your browser cache because it can cause you to be stuck in an older version of the game.
 
 
-Watch Stijn live here: https://www.twitch.tv/stijntime_2 go follow him he's really fun!
+Watch Stijn live here: https://www.twitch.tv/stijntime_2 go follow him he's really fun, and my favorite streamer EVER (pls make me a mod)!
