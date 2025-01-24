@@ -115,6 +115,9 @@ label_rotation_speed = -200
 label_scale_speed = 1.3
 label_text = "Ruben"
 
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/MarblesButton" to="." method="_on_marbles_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
