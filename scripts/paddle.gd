@@ -1,7 +1,9 @@
 extends Node2D
 
+@onready var label = $Label
+
 const width = 192
-const height = 80
+const height = 64
 
 var dir = 0.0
 var acceleration = 10.0
@@ -29,3 +31,7 @@ func _process(delta):
 			if ball.dir.y < 0.3:
 				ball.dir.y -= 0.2
 				ball.dir = ball.dir.normalized()
+
+func play_as_ruben():
+	label.text = "Ruben"
+	speed = 700.0

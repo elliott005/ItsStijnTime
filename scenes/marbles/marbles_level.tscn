@@ -245,6 +245,15 @@ offset_right = 1096.0
 offset_bottom = 1324.0
 text = "Potato is SO GOOD at TM"
 
+[node name="RubenCheers" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="RubenCheers"]
+offset_left = -6216.0
+offset_top = -3840.0
+offset_right = -5999.0
+offset_bottom = -3796.0
+text = "Ruben>Stijn"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
 

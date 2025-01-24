@@ -11,6 +11,7 @@ extends Node2D
 @onready var end_center_container = $CanvasLayer/EndCenterContainer
 @onready var winner_label = $CanvasLayer/EndCenterContainer/VBoxContainer/WinnerLabel
 @onready var potato_cheers = $PotatoCheers
+@onready var ruben_cheers = $RubenCheers
 
 @export var world_color: Color
 
@@ -23,7 +24,7 @@ var follow_marble_button_pressed = false
 var marble_scene = preload("res://scenes/marbles/marble.tscn")
 
 var zoom_speed = 0.2
-var zoom_min = 0.1
+var zoom_min = 0.2
 var zoom_max = 5.0
 
 var random_start_pos_max = Vector2(200, 100)
@@ -34,6 +35,7 @@ var potato_playing = false
 func _ready():
 	end_center_container.hide()
 	potato_cheers.hide()
+	ruben_cheers.hide()
 	
 	for child in world.get_children():
 		for coll in child.get_children():
@@ -98,6 +100,8 @@ func ready_marble(marble_name):
 	if marble_name.to_lower() == "potato":
 		potato_cheers.show()
 		potato_playing = true
+	elif marble_name.to_lower() == "ruben":
+		ruben_cheers.show()
 
 
 func _on_back_button_pressed():

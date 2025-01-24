@@ -42,6 +42,9 @@ func _ready():
 		var viewer = viewer_scene.instantiate()
 		viewer.position = Vector2(randi_range(0, spawn_area_size.x), randi_range(0, spawn_area_size.y))
 		viewers.add_child(viewer)
+	
+	if Globals.r_clicked:
+		paddle.play_as_ruben()
 
 func _process(delta):
 	if Input.is_action_just_pressed("quit"):
